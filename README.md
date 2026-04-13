@@ -1,55 +1,99 @@
-The software application herein designated as Gshark is engineered to execute the parsing of raw PCAP and PCAPNG capture files exclusively within the confines of a localized web browser environment. Furthermore, it utilizes the Gemini Large Language Models provided by Google to conduct comprehensive heuristic audits upon network frames. Consequently, the requisite for any server-side processing infrastructure is entirely obviated.
+⚡ Gshark
 
-Principal Functional Specifications
+Browser-native packet analysis. Zero backend. Zero nonsense.
 
-Universal Binary Parsing Mechanics: The system is designed to dynamically identify and process both the legacy PCAP and the contemporary PCAPNG file formats. The processing of Large Receive Offload (LRO) frames and 802.1Q Virtual Local Area Network (VLAN) tags is managed locally through the implementation of the JavaScript DataView interface.
+Gshark is a fully client-side network forensics tool that parses .pcap and .pcapng files directly in your browser — no uploads, no servers, no waiting around for some cloud instance to choke and die.
 
-Neural Querying Mechanisms: Packet captures may be filtered via natural language inputs; for instance, queries may be formulated to isolate Domain Name System traffic originating exclusively from a specified local subnet.
+It pairs local packet dissection with Google Gemini AI to give you intelligent, on-demand analysis of your traffic.
 
-Comprehensive Heuristic Auditing: Upon the deliberate selection of any given frame, a structured JSON report is generated and extracted, which enumerates the following analytical parameters:
+🚀 Why This Exists
 
-Traffic Signature Classification
+Most packet analysis tools assume:
 
-Threat Level Assessment
+You’re okay uploading sensitive traffic to a server
+You have unlimited memory
+Or you enjoy watching cloud services crash
 
-Detection of Anomalies
+Gshark does the opposite:
 
-Payload Decomposition and Subsequent Tactical Directives
+Everything runs locally
+Your data stays on your machine
+AI analysis happens only when you explicitly ask for it
+🧠 Core Features
+🔍 Universal PCAP Parsing
+Supports both PCAP and PCAPNG
+Handles:
+LRO (Large Receive Offload)
+VLAN tagging (802.1Q)
+Built using efficient DataView parsing in JavaScript
+💬 Natural Language Filtering
 
-Topology Mapping: The unique communications established between endpoints are mapped autonomously to facilitate the visual representation of the network graph.
+Skip writing filters like it’s 2005.
 
-Zero-Installation Infrastructure: The application is encapsulated entirely within a singular HTML document, thereby negating the requirement for package managers, backend dependencies, or containerization protocols.
+Just type:
 
-Architectural Framework
+“Show DNS traffic from 192.168.1.0/24”
 
-Tools designed for network forensics are generally recognized to require substantial memory allocations. The transmission of voluminous PCAP files to server-side backends—particularly those hosted on gratuitous cloud tiers—frequently precipitates Out-Of-Memory (OOM) structural failures.
+And get results instantly.
 
-Gshark is purported to resolve such limitations through the complete circumvention of backend infrastructure.
+🧬 AI-Powered Packet Analysis
 
-Localized Dissection: The entirety of the binary packet dissection processes is executed strictly within the memory constraints of the localized web browser.
+Click any frame → get a structured JSON report with:
 
-Direct Artificial Intelligence Linkage: The application establishes a direct connection to the Google Gemini Application Programming Interface (API) directly from the client device.
+Traffic classification
+Threat assessment
+Anomaly detection
+Payload breakdown
+Suggested next actions
 
-Procedural Initialization Instructions
+No guesswork. Just answers.
 
-To initialize the application, the requisite components are limited to a compatible web browser and a valid API key.
+🌐 Network Topology Mapping
 
-Acquisition of the API Key: A Gemini API Key must be obtained via the Google AI Studio portal.
+Automatically maps communication between endpoints into a visual graph.
 
-Application Launch: The gshark.html file must be downloaded from the respective repository and subsequently executed within a contemporary web browser environment.
+Because staring at raw packets forever is not a personality.
 
-Vault Configuration: The operator is required to navigate to the configuration interface wherein the obtained Gemini API Key must be securely inserted.
+📦 Zero-Install Architecture
+Single HTML file
+No dependencies
+No backend
+No Docker rabbit hole
 
-Execution of Analysis: The designated ingest function must be selected to facilitate the upload of the requisite .pcap or .pcapng file, thereby commencing the investigative protocol.
+Just open and go.
 
-Security and Privacy Protocols
+🏗️ How It Works
+Local-First Processing
 
-Given that the program is constituted as a static, client-side application, the following operational conditions are asserted:
+All parsing happens inside your browser memory.
+Your PCAP files never leave your machine.
 
-Data Retention: The capture files are retained locally; the binary parsing engine operates strictly within the localized browser memory, ensuring that said files are never transmitted to external servers.
+Direct AI Integration
 
-Selective Data Transmission: It is strictly the specified hexadecimal dump of a frame—expressly designated for auditing or neural querying purposes—that is transmitted to the Google API for analytical processing.
+When you request analysis:
 
-Licensing Declaration
+Only the relevant hex dump is sent
+Data goes directly to Google Gemini API
+No intermediate servers involved
+🛠️ Getting Started
+Get a Gemini API Key
+Head to Google AI Studio and grab one.
+Download the App
+Open gshark.html in a modern browser.
+Configure
+Paste your API key into the settings panel
+Analyze
+Upload your .pcap or .pcapng
+Start digging
+🔐 Security & Privacy
+✅ PCAP files stay local
+✅ No background uploads
+✅ Only selected packet data is sent for AI analysis
+❌ No hidden server-side processing
 
-This software project is distributed under the terms of the MIT License. Reference to the appended LICENSE document is advised for comprehensive details regarding permitted utilization and legal restrictions.
+If something leaves your machine, it’s because you told it to.
+
+📜 License
+
+MIT License.
+Do whatever you want, just don’t pretend you wrote it.
