@@ -1,73 +1,55 @@
-Gshark | Neural Forensics
+The software application herein designated as Gshark is engineered to execute the parsing of raw PCAP and PCAPNG capture files exclusively within the confines of a localized web browser environment. Furthermore, it utilizes the Gemini Large Language Models provided by Google to conduct comprehensive heuristic audits upon network frames. Consequently, the requisite for any server-side processing infrastructure is entirely obviated.
 
-Gshark is a purely browser-based, AI-augmented network packet analysis tool. It parses raw PCAP and PCAPNG capture files locally and leverages Google's Gemini Large Language Models (LLMs) to perform deep heuristic audits on network frames.
+Principal Functional Specifications
 
-⚠️ The Architecture: Why Client-Side?
+Universal Binary Parsing Mechanics: The system is designed to dynamically identify and process both the legacy PCAP and the contemporary PCAPNG file formats. The processing of Large Receive Offload (LRO) frames and 802.1Q Virtual Local Area Network (VLAN) tags is managed locally through the implementation of the JavaScript DataView interface.
 
-Network forensics tools are notoriously memory-intensive. Uploading 100MB+ PCAP files to a server-side backend (like a free-tier Flask/Render instance) will inevitably result in Out-Of-Memory (OOM) crashes.
+Neural Querying Mechanisms: Packet captures may be filtered via natural language inputs; for instance, queries may be formulated to isolate Domain Name System traffic originating exclusively from a specified local subnet.
 
-Gshark solves this by bypassing the server entirely.
-
-Local Parsing: 100% of the binary packet dissection (PCAP & PCAPNG) happens in the user's browser using JavaScript DataView. Zero server RAM is consumed.
-
-Direct AI Link: The application connects directly to the Google Gemini API from the client.
-
-✨ Features
-
-Universal Capture Support: Dynamically detects and parses both classic PCAP and modern PCAPNG binary formats, including support for Large Receive Offload (LRO) frames and 802.1Q VLAN tags.
-
-Neural Querying: Filter traffic using natural language (e.g., "Show me only DNS traffic"). The AI translates this into strict application filters.
-
-Deep Heuristic Audit: Select any frame and send its hex dump to the AI. Gshark extracts a tactical JSON report detailing:
+Comprehensive Heuristic Auditing: Upon the deliberate selection of any given frame, a structured JSON report is generated and extracted, which enumerates the following analytical parameters:
 
 Traffic Signature Classification
 
-Threat Level (SAFE to CRITICAL)
+Threat Level Assessment
 
-Detected Anomalies
+Detection of Anomalies
 
-Tactical Directives for Investigators
+Payload Decomposition and Subsequent Tactical Directives
 
-Topology Mapping: Automatically maps unique endpoint communications and flags potentially risky nodes based on primitive protocol heuristics.
+Topology Mapping: The unique communications established between endpoints are mapped autonomously to facilitate the visual representation of the network graph.
 
-Zero-Install: It's a single HTML file. No npm install, no backend configurations, no Docker containers.
+Zero-Installation Infrastructure: The application is encapsulated entirely within a singular HTML document, thereby negating the requirement for package managers, backend dependencies, or containerization protocols.
 
-🚀 Getting Started
+Architectural Framework
 
-Prerequisites
+Tools designed for network forensics are generally recognized to require substantial memory allocations. The transmission of voluminous PCAP files to server-side backends—particularly those hosted on gratuitous cloud tiers—frequently precipitates Out-Of-Memory (OOM) structural failures.
 
-You need a Google Gemini API Key. You can get one for free from Google AI Studio.
+Gshark is purported to resolve such limitations through the complete circumvention of backend infrastructure.
 
-Installation & Execution
+Localized Dissection: The entirety of the binary packet dissection processes is executed strictly within the memory constraints of the localized web browser.
 
-Clone this repository or download the gshark.html file.
+Direct Artificial Intelligence Linkage: The application establishes a direct connection to the Google Gemini Application Programming Interface (API) directly from the client device.
 
-Double-click gshark.html to open it in any modern web browser (Chrome, Edge, Firefox, Brave).
+Procedural Initialization Instructions
 
-Navigate to the Configuration tab (the gear icon).
+To initialize the application, the requisite components are limited to a compatible web browser and a valid API key.
 
-Paste your Gemini API Key into the vault. (Note: This key is stored securely in your browser's local localStorage and is never sent anywhere except directly to Google's API).
+Acquisition of the API Key: A Gemini API Key must be obtained via the Google AI Studio portal.
 
-Click Ingest to upload your .pcap or .pcapng file.
+Application Launch: The gshark.html file must be downloaded from the respective repository and subsequently executed within a contemporary web browser environment.
 
-🛠️ Tech Stack
+Vault Configuration: The operator is required to navigate to the configuration interface wherein the obtained Gemini API Key must be securely inserted.
 
-Frontend: React 18 (via standalone CDN)
+Execution of Analysis: The designated ingest function must be selected to facilitate the upload of the requisite .pcap or .pcapng file, thereby commencing the investigative protocol.
 
-Styling: Tailwind CSS (via CDN)
+Security and Privacy Protocols
 
-Transpilation: Babel (in-browser)
+Given that the program is constituted as a static, client-side application, the following operational conditions are asserted:
 
-AI Integration: Google Generative Language API (gemini-2.5-flash)
+Data Retention: The capture files are retained locally; the binary parsing engine operates strictly within the localized browser memory, ensuring that said files are never transmitted to external servers.
 
-🔒 Security & Privacy Notice
+Selective Data Transmission: It is strictly the specified hexadecimal dump of a frame—expressly designated for auditing or neural querying purposes—that is transmitted to the Google API for analytical processing.
 
-Because this is a static, client-side application:
+Licensing Declaration
 
-Your PCAP files never leave your computer. They are read entirely in the browser's memory.
-
-Only the specific frames you choose to "Audit" are sent to the AI. Do not audit frames containing highly sensitive, unencrypted PII or credentials, as that specific payload text is sent to Google's API for analysis.
-
-License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
+This software project is distributed under the terms of the MIT License. Reference to the appended LICENSE document is advised for comprehensive details regarding permitted utilization and legal restrictions.
